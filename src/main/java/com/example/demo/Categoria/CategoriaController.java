@@ -21,13 +21,11 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @SuppressWarnings("rawtypes")
     @GetMapping
     public List<Categoria> findAll() {
         return categoriaService.findAll();
     }
 
-    @SuppressWarnings("rawtypes")
     @GetMapping("/{id}")
     public ResponseEntity<Categoria> findById(@PathVariable Long id) {
         Optional<Categoria> categoria = categoriaService.findById(id);
@@ -35,24 +33,22 @@ public class CategoriaController {
                         .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @SuppressWarnings("rawtypes")
+
     @PostMapping
     public Categoria save(@RequestBody Categoria categoria) {
         return categoriaService.save(categoria);
     }
 
-    @SuppressWarnings("rawtypes")
     @PutMapping("/{id}")
     public ResponseEntity<Categoria> update(@PathVariable Long id, @RequestBody Categoria categoria) {
         Optional<Categoria> existingCategoria = categoriaService.findById(id);
         if (!existingCategoria.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        categoria.setId_categoria(id);
+        categoria.setId(id); // Establecer el ID de la categoría
         return ResponseEntity.ok(categoriaService.save(categoria));
     }
 
-    @SuppressWarnings("rawtypes")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         Optional<Categoria> existingCategoria = categoriaService.findById(id);

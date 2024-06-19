@@ -1,7 +1,5 @@
 package com.example.demo.Categoria;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

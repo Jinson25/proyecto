@@ -2,9 +2,9 @@ package com.example.demo.ComprasProducto;
 
 import java.math.BigDecimal;
 
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
-
 import com.example.demo.Compra.Compra;
+import com.example.demo.Producto.Producto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -27,12 +27,13 @@ public class CompraProductos {
 
     @SuppressWarnings("rawtypes")
     @ManyToOne
-    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    @JoinColumn(name = "compra_productos", insertable = false, updatable = false)
     private Compra compra;
 
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
-    private Producer producto;
+    private Producto producto;
+
 
     // Getters y setters
     public Long getId_compra() {
@@ -85,11 +86,11 @@ public class CompraProductos {
         this.compra = compra;
     }
 
-    public Producer getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(Producer producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 }

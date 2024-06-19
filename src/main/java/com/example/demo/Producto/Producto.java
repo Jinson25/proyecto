@@ -20,7 +20,6 @@ public class Producto {
     private Long id_producto;
     private String nombre;
     
-    @SuppressWarnings("rawtypes")
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
@@ -47,12 +46,10 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    @SuppressWarnings("rawtypes")
     public Categoria getCategoria() {
         return categoria;
     }
 
-    @SuppressWarnings("rawtypes")
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
